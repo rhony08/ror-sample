@@ -26,6 +26,9 @@
       }
       .price {
         font-size: 1.414em;
+        form, div {
+          display: inline;
+        }
       }
     }
   }

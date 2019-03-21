@@ -14,7 +14,9 @@
       </p>
       <div class="price">
         <%= number_to_currency(product.price, unit: "IDR", delimiter: ".", separator: ",") %>
+        <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
       </div>
+
     </li>
   <% end %>
 </ul>
