@@ -17,9 +17,11 @@
       </header>
       <section class="content">
         <nav class="side_nav">
-          <div id="cart" class="carts">
-            <%= render(@cart) %>
-          </div>
+          <% if @cart %>
+            <%= hidden_div_if(@cart.line_items.empty?, {id: 'cart', class: 'carts'}) do %>
+              <%= render @cart %>
+            <% end %>
+          <% end %>
           
           <ul>
             <li><a href="/">Home</a></li>
