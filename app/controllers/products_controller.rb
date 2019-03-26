@@ -42,6 +42,8 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
+        @products = Product.order(updated_at: :desc)
+        ActionCable.server.broadcast 'products', html: render_to_string('store/index', layout: false)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
