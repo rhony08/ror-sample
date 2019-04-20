@@ -29,5 +29,19 @@ module CilsyBooksStore
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # background job adapter
+    config.active_job.queue_adapter = :sidekiq
+
+    # mailer setup
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings   = {
+      :authentication => :plain,
+      :address => 'smtp.mailgun.org',
+      :port => 587,
+      :domain => 'sandboxe9ef3380433347ef8b9b0edd373b5949.mailgun.org',
+      :user_name => 'postmaster@sandboxe9ef3380433347ef8b9b0edd373b5949.mailgun.org',
+      :password => 'e850070f7d88ddb8f1d59e1037ad4215-2416cf28-58155ebe'
+    }
   end
 end
