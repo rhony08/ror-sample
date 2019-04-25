@@ -11,24 +11,58 @@
     </div>
   <% end %>
 
+  <% if @user %>
+
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description, cols: 60, rows: 5 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :image_url %>
+      <%= form.text_field :image_url %>
+    </div>
+
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.text_field :price %>
+    </div>
+
+    <div class="field">
+      <%= form.label :tag %>
+      <table>
+        <% (0..(@tags.length)/2).each do |i| %>
+          <tr>
+            <% if @tags[i*2] %>
+              <td>
+                <%= check_box_tag "tags[]",  @tags[i*2].id %> <%= @tags[i*2].name %>
+              </td>
+            <% end %>
+            <% if @tags[i*2+1] %>
+              <td>
+                <%= check_box_tag "tags[]", @tags[i*2+1].id %> <%= @tags[i*2+1].name %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+
+  <% end %>
+
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.label :review %>
+    <%= form.text_field :desc %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, cols: 60, rows: 5 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image_url %>
-    <%= form.text_field :image_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
+    <%= form.label :rate %>
+    <%= form.number_field :review, min: 0, max: 5 %>
   </div>
 
   <div class="actions">

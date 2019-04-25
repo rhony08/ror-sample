@@ -1,6 +1,9 @@
 class Product < ApplicationRecord
 	before_destroy :ensure_not_referenced_by_any_line_item
 	has_many :line_items
+	has_many :reviews, dependent: :destroy
+	has_many :product_tags
+	has_many :tags, through: :product_tags
 
 	validates :title, :description, :image_url, presence: true
 	validates :price, numericality: {greater_than_or_equal_to: 0.01}

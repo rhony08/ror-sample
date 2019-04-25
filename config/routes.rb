@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   root 'store#index', as: 'store_index'
   resources :products
   resources :orders, only: [:new, :create]
+  resources :reviews
+  resources :tags
 end
